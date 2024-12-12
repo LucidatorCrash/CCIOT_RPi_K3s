@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: publisher-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mqtt-publisher
+  template:
+    metadata:
+      labels:
+        app: mqtt-publisher
+    spec:
+      containers:
+        - name: publisher-container
+          image: mqtt-publisher:1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          volumeMounts:
+          - name: certs-volume
+            mountPath: /app/certs
+          - name: shared-volume
+            mountPath: /data/shared
+      volumes:
+      - name: certs-volume
+        secret:
+          secretName: aws-iot-certs
+      - name: shared-volume
+        persistentVolumeClaim:
+          claimName: shared-volume-claim

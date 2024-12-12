@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ble-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ble-listener
+  template:
+    metadata:
+      labels:
+        app: ble-listener
+    spec:
+      containers:
+        - name: ble-container
+          image: ble-listener:1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: dbus-directory
+              mountPath: /var/run/dbus
+            - name: dbus-socket
+              mountPath: /var/run/dbus/system_bus_socket
+              readOnly: false
+            - name: shared-volume
+              mountPath: /data/shared
+      volumes:
+        - name: dbus-directory
+          hostPath:
+            path: /var/run/dbus
+            type: DirectoryOrCreate
+        - name: dbus-socket
+          hostPath:
+            path: /var/run/dbus/system_bus_socket
+            type: Socket
+        - name: shared-volume
+          persistentVolumeClaim:
+            claimName: shared-volume-claim

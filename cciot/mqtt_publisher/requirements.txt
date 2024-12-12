@@ -1,0 +1,3 @@
+awsiotsdk
+paho-mqtt
+
