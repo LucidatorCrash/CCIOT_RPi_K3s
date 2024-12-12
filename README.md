@@ -2,8 +2,10 @@
 
 ## Details
 Using the files directly will run the deployment on k3s and by default, creates 2 replicas of the BLE_Listener and MQTT_Publisher. <br>
+This file also assumes you have k3s installed and working without issues. <br>
+To install k3s, you can check here for the details: https://docs.k3s.io/installation
 
-## __Steps to use this:__ 
+## Steps to use this:
 
 ### **Step 0** <br>
 Clone the repo and port it over to your RPi <br>
