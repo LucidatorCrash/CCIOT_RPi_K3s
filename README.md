@@ -1,7 +1,8 @@
 # CCIOT_RPi_K3s
 
-<u> __Steps to use this:__ </u>
+## __Steps to use this:__ 
 
+**1.Edit mqtt_publisher.py**
+1.1 Change ENDPOINT
 
-
-<u>This text is underlined</u>
+**2.Add all your certs**
