@@ -2,9 +2,9 @@
 
 ## Details
 Using the files directly will run the deployment on k3s and by default, creates 2 replicas of the BLE_Listener and MQTT_Publisher. <br>
-This file also assumes you have k3s installed and working without issues. <br>
-To install k3s, you can check here for the details: https://docs.k3s.io/installation
-
+This file also assumes you have docker and k3s installed and working without issues. <br>
+To install k3s on your RPi, you can check here for the details: https://docs.k3s.io/installation
+To install docker on your RPi, you can check here for the details: https://docs.docker.com/engine/install/raspberry-pi-os/
 ## Steps to use this:
 
 ### **Step 0** <br>
