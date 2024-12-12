@@ -1,3 +1,4 @@
 # CCIOT_RPi_K3s
 
-this is not it
+<u>_Steps to use this:_</u>
+
